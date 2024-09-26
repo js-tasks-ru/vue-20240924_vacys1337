@@ -19,5 +19,3 @@ const simpleComponent = defineComponent({
 
 const app = createApp(simpleComponent);
 app.mount('#app');
-
-export default app;
