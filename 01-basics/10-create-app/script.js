@@ -3,7 +3,7 @@ import { defineComponent, createApp } from 'vue'
 const simpleComponent = defineComponent({
     name: 'DateComponent',
     setup() {
-        const dateString = new Date().toLocaleDateString('en-EN', { 
+        const dateString = new Date().toLocaleDateString(navigator.language, { 
             dateStyle: 'long' 
         });
 
