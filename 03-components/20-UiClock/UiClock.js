@@ -5,14 +5,14 @@ export default defineComponent({
 
   setup() {
     const time = ref(null);
-    const interval = ref(null);
+    let interval;
 
     onMounted(() => {
       time.value = new Date().toLocaleTimeString(navigator.language, { 
         timeStyle: 'medium'
       });
 
-      interval.value = setInterval(() => {
+      interval = setInterval(() => {
         time.value = new Date().toLocaleTimeString(navigator.language, { 
           timeStyle: 'medium'
         });
@@ -20,7 +20,7 @@ export default defineComponent({
     });
 
     onUnmounted(() => {
-      clearInterval(interval.value);
+      clearInterval(interval);
     });
 
     return {
