@@ -15,6 +15,18 @@ export default defineComponent({
     },
   },
 
+  emits: ['delete-email'],
+
+  setup(props, { emit }) {
+    const onDelete = (index) => {
+      emit('delete-email', index);
+    }
+
+    return {
+      onDelete,
+    }
+  },
+
   template: `
     <ul class="emails-list unstyled-list" aria-label="Emails">
       <EmailListItem
@@ -22,6 +34,8 @@ export default defineComponent({
         :key="email"
         :email="email"
         :marked="isMarked"
+        :index="index"
+        @email-delete="onDelete(index)"
       />
     </ul>
   `,
