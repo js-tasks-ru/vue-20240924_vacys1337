@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'EmailListItem',
-
+  
   props: {
     email: {
       type: String,
@@ -15,10 +15,22 @@ export default defineComponent({
     },
   },
 
+  emits: ['email-delete'],
+
+  setup(props, { emit }) {
+    const handleDeleteAction = () => {
+      emit('email-delete');
+    }
+
+    return {
+      handleDeleteAction,
+    }
+  },
+
   template: `
     <li :class="{ marked }">
       {{ email }}
-      <button type="button" aria-label="Удалить" @click.stop>❌</button>
+      <button type="button" aria-label="Удалить" @click.stop="handleDeleteAction">❌</button>
     </li>
   `,
 })
